@@ -1,38 +1,60 @@
+
+body{
+  background-color: blanchedalmond;
+  margin: 0;
+  height:100%;
+}
+
 .App {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 15rem;
+  grid-auto-rows: 1fr;
+  gap: 0;
+}
+
+.header {
+  height: 15rem;
   text-align: center;
+  background-color: darkgray;
+  margin:0;
+  grid-column: 1 / span 2;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.sidebar {
+  grid-row: 2 / span 3;
+  background-color: gray;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.sidebar {
+  padding-right: 100px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.todo-card-area { 
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 400px));
+  gap: 15px;
+  grid-template-rows: auto;
 }
 
-.App-link {
-  color: #61dafb;
+.card {
+  border: 1px solid black;
+  border-radius: 30px;
+  display: grid;
+  grid-auto-rows: auto;
+  padding: 10px;
+  background-color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.create-todo-button {
+  width: 150px;
+  height: 100px;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 4;
+  justify-self: center;
+  margin-top: 30px;
+  border-radius: 5px;
 }
+
+
