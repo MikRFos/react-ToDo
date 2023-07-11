@@ -40,11 +40,11 @@ function ModalForm(props) {
             <input id='title-input' value={title} onChange={e => setTitle(e.target.value)}></input>
           </div>
           <div className='form-row'>
-            <label htmlFor='raw-todos'>ToDos</label>
+            <label htmlFor='raw-todos'>ToDos:</label>
             <textarea placeholder='Enter comma separated list' id='raw-todos' value={itemList} onChange={e => setItemList(e.target.value)}></textarea>
           </div>
           <div className='form-row'>
-            <label htmlFor='description-input'>Description</label>
+            <label htmlFor='description-input'>Description:</label>
             <input type='text' id='description-input' value={description} onChange={e => setDescription(e.target.value)}></input>
           </div>
           <button 
