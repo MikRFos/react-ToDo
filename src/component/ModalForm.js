@@ -30,6 +30,7 @@ function ModalForm(props) {
     setDescription('');
   }
 
+
   return (
     <>
     <button className="create-todo-button" onClick={() => setOpen(true)}>Create ToDo List</button>

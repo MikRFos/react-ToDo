@@ -10,21 +10,47 @@ function App() {
 
   const defaultToDo = new ToDoList(
     'Test To-Do',
-    [{text:'Todo Item 1', complete: false, id: crypto.randomUUID()}, 
-      {text:'ToDo Item 2', complete:false, id: crypto.randomUUID()}, 
-      {text:'ToDo Item 3', complete:false, id: crypto.randomUUID()}, 
-      {text: 'ToDo Item 4', complete:false, id:crypto.randomUUID()}],
+    [{text:'Todo Item 1', completed: false, id: crypto.randomUUID()}, 
+      {text:'ToDo Item 2', completed:false, id: crypto.randomUUID()}, 
+      {text:'ToDo Item 3', completed:false, id: crypto.randomUUID()}, 
+      {text: 'ToDo Item 4', completed:false, id:crypto.randomUUID()}],
     'Default todo list of things i gotta do',
   )
 
   const [todos, setTodos] = useState([defaultToDo]);
+
+  function toggleItems(todoId, itemId, completed) {
+    setTodos((currentTodos => {
+      return currentTodos.map((todo) => {
+        if (todoId === todo.id) {
+          todo.todoList.map((item) => {
+            if (itemId === item.id) {
+              item.completed = completed;
+            }
+            return item;
+          })
+        }
+        checkComplete(todo);
+        return todo;
+      })
+    }))
+  }
+
+  function checkComplete(todo) {
+    for(let item of todo.todos){
+      if (!item.completed){
+        return false;
+      }
+    }
+    return true;
+  }
   
   return (
     <div className="App">
       <Header title={'ToDo List'}></Header>
       <Sidebar todos={todos}></Sidebar>
-      <MainContent todos={todos}></MainContent>
-      <ModalForm todos={todos} setTodos={setTodos} ></ModalForm>   
+      <MainContent toggle={toggleItems} todos={todos}></MainContent>
+      <ModalForm  todos={todos} setTodos={setTodos} ></ModalForm>   
     </div>
   );
 }
