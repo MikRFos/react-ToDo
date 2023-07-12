@@ -1,6 +1,6 @@
 
 body{
-  background-color: blanchedalmond;
+  background-color: #B7D1DA;
   margin: 0;
   height:100%;
   min-height: 100vh;
@@ -12,7 +12,7 @@ body{
 .App {
   display: grid;
   grid-template-columns: minmax(300px, 17%) 4fr;
-  grid-template-rows: minmax(5rem, 10rem);
+  grid-template-rows: 5rem;
   grid-auto-rows: 1fr;
   gap: 0;
   min-height: 100vh;
@@ -21,18 +21,19 @@ body{
 .header {
   height: 100%;
   text-align: center;
-  background-color: darkgray;
+  background-color: #4C8294;
   margin:0;
   grid-column: 1 / span 2;
 }
 
 .sidebar {
   grid-row: 2 / span 2;
-  background-color: gray;
+  background-color: #78A9BA;
 }
 
 .sidebar {
   padding-right: 100px;
+  padding-left: 15px;
 }
 
 .todo-card-area { 
@@ -41,6 +42,7 @@ body{
   grid-template-columns: repeat(auto-fit, minmax(200px, 20%));
   gap: 15px;
   grid-auto-rows: 1fr;
+  padding: 20px;
 }
 
 .card {
