@@ -5,6 +5,7 @@ function Sidebar(props) {
   <div className='sidebar'>
         <h2>Current Projects: </h2>
         <ul>
+          {props.todos.length === 0 && 'No Todos'}
           {props.todos.map(todo => {
             return <li key={todo.id}>
               {todo.title}

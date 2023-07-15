@@ -1,11 +1,9 @@
 function Card(props) {
-
-  console.log(props.list);
   return (
     <div className='card'>
     <p>{props.todo.title}</p>
      <ul>
-      {props.todo.todoList.map( item => {
+      {props.todo.todos.map( item => {
         return (
           <li key={item.id}>
             <label>

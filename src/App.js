@@ -8,7 +8,7 @@ import Header from './component/header';
 
 function App() {
 
-  const defaultToDo = new ToDoList(
+  const defaultToDo = ToDoList(
     'Test To-Do',
     [{text:'Todo Item 1', completed: false, id: crypto.randomUUID()}, 
       {text:'ToDo Item 2', completed:false, id: crypto.randomUUID()}, 
@@ -23,26 +23,19 @@ function App() {
     setTodos((currentTodos => {
       return currentTodos.map((todo) => {
         if (todoId === todo.id) {
-          todo.todoList.map((item) => {
+          todo.todos.map((item) => {
             if (itemId === item.id) {
               item.completed = completed;
             }
             return item;
           })
         }
-        checkComplete(todo);
+        if (todo.checkComplete){
+          return {...todo, completed}
+       }
         return todo;
       })
     }))
-  }
-
-  function checkComplete(todo) {
-    for(let item of todo.todos){
-      if (!item.completed){
-        return false;
-      }
-    }
-    return true;
   }
   
   return (
