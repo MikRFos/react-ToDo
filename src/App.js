@@ -18,31 +18,13 @@ function App() {
   )
 
   const [todos, setTodos] = useState([defaultToDo]);
-
-  function toggleItems(todoId, itemId, completed) {
-    setTodos((currentTodos => {
-      return currentTodos.map((todo) => {
-        if (todoId === todo.id) {
-          todo.todos.map((item) => {
-            if (itemId === item.id) {
-              item.completed = completed;
-            }
-            return item;
-          })
-        }
-        if (todo.checkComplete){
-          return {...todo, completed}
-       }
-        return todo;
-      })
-    }))
-  }
+  const [completedTodos, setCompletedTodos] = useState([]);
   
   return (
     <div className="App">
       <Header title={'ToDo List'}></Header>
-      <Sidebar todos={todos}></Sidebar>
-      <MainContent toggle={toggleItems} todos={todos}></MainContent>
+      <Sidebar todos={todos} completedTodos={completedTodos}></Sidebar>
+      <MainContent todos={todos} setTodos={setTodos} setCompletedTodos={setCompletedTodos}></MainContent>
       <ModalForm  todos={todos} setTodos={setTodos} ></ModalForm>   
     </div>
   );

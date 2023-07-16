@@ -1,4 +1,4 @@
-import React from "react";
+import CompletedToDoList from "../completedToDoList";
 
 function Sidebar(props) {
   return(
@@ -12,6 +12,7 @@ function Sidebar(props) {
             </li>
           })}
         </ul>
+        {props.completedTodos.length === 0 ? null : <CompletedToDoList todos={props.completedTodos}></CompletedToDoList>}
       </div>
   )
 }
