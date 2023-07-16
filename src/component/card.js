@@ -1,11 +1,9 @@
 function Card(props) {
 
   function toggleItems(todoId, itemId, completed) {
-    console.log('clicked')
     props.setTodos((currentTodos) => {
       const newArray = currentTodos.map((todo) => {
         if (todoId === todo.id) {
-          console.log('found todo')
           const newTodos = getClickedTodo(todo, itemId, completed);
           const newToDoItem = {...todo, todos: newTodos};
           if (newToDoItem.checkComplete()){
@@ -17,15 +15,13 @@ function Card(props) {
         }
         return todo;
       })
-      console.log(newArray);
       return newArray;
     })
   }
 
-
-
   function addCompletedToDo(todo){ 
     props.setCompletedTodos((current) => {
+      console.log(current)
       return [...current, todo];
     })
   }

@@ -10,7 +10,7 @@ function ModalForm(props) {
 
 
   function createTodo(title, listItems, description, completed) {
-    const newTodo = new ToDoList(title, listItems, description, completed);
+    const newTodo = ToDoList(title, listItems, description, completed);
 
     props.setTodos((currentToDos) => {
       return [...currentToDos, newTodo];
