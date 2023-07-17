@@ -21,10 +21,19 @@ function Card(props) {
 
   function addCompletedToDo(todo){ 
     props.setCompletedTodos((current) => {
-      console.log(current)
+      //FIGURE OUT WHY THIS IS BEING CALLED MULTIPLE TIMES
+      //This is a hack to get it working by ensuring only 1 ID is in the array.
+      for(let i=0; i < current.length; i+= 1){
+        console.log(current[i]);
+        if (current[i].id === todo.id){
+          return [...current];
+        }
+      }
+      props.removeFromCurrentToDos(todo);
       return [...current, todo];
     })
   }
+  
 
   function removeCompletedToDo(todo){ 
     props.setCompletedTodos((current) => {

@@ -19,12 +19,18 @@ function App() {
 
   const [todos, setTodos] = useState([defaultToDo]);
   const [completedTodos, setCompletedTodos] = useState([]);
+
+  function removeFromCurrentToDos(todo) {
+    setTodos((current) => {
+      return current.filter(item => item.id !== todo.id)
+    })
+  }
   
   return (
     <div className="App">
       <Header title={'ToDo List'}></Header>
       <Sidebar todos={todos} completedTodos={completedTodos}></Sidebar>
-      <MainContent todos={todos} setTodos={setTodos} setCompletedTodos={setCompletedTodos}></MainContent>
+      <MainContent todos={todos} setTodos={setTodos} setCompletedTodos={setCompletedTodos} removeFromCurrentToDos={removeFromCurrentToDos}></MainContent>
       <ModalForm  todos={todos} setTodos={setTodos} ></ModalForm>   
     </div>
   );
