@@ -7,7 +7,7 @@ function Sidebar(props) {
         <ul>
           {props.todos.length === 0 && 'No Todos'}
           {props.todos.map(todo => {
-            return <li key={todo.id}>
+            return <li key={todo.id} onClick={() => console.log(`${todo.title} Clicked`)}>
               {todo.title}
             </li>
           })}

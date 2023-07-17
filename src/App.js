@@ -30,7 +30,12 @@ function App() {
     <div className="App">
       <Header title={'ToDo List'}></Header>
       <Sidebar todos={todos} completedTodos={completedTodos}></Sidebar>
-      <MainContent todos={todos} setTodos={setTodos} setCompletedTodos={setCompletedTodos} removeFromCurrentToDos={removeFromCurrentToDos}></MainContent>
+      <MainContent 
+        todos={todos} 
+        setTodos={setTodos} 
+        setCompletedTodos={setCompletedTodos} 
+        removeFromCurrentToDos={removeFromCurrentToDos}>
+      </MainContent>
       <ModalForm  todos={todos} setTodos={setTodos} ></ModalForm>   
     </div>
   );
