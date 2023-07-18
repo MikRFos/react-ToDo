@@ -19,6 +19,7 @@ function App() {
 
   const [todos, setTodos] = useState([defaultToDo]);
   const [completedTodos, setCompletedTodos] = useState([]);
+  const [layout, setLayout] = useState({style:'list', selected:null});
 
   function removeFromCurrentToDos(todo) {
     setTodos((current) => {
@@ -29,8 +30,9 @@ function App() {
   return (
     <div className="App">
       <Header title={'ToDo List'}></Header>
-      <Sidebar todos={todos} completedTodos={completedTodos}></Sidebar>
+      <Sidebar todos={todos} completedTodos={completedTodos} setLayout={setLayout}></Sidebar>
       <MainContent 
+        layout={layout}
         todos={todos} 
         setTodos={setTodos} 
         setCompletedTodos={setCompletedTodos} 

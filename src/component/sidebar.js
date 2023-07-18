@@ -12,7 +12,7 @@ function Sidebar(props) {
             </li>
           })}
         </ul>
-        {props.completedTodos.length === 0 ? null : <CompletedToDoList todos={props.completedTodos}></CompletedToDoList>}
+        {props.completedTodos.length === 0 ? null : <CompletedToDoList todos={props.completedTodos} setLayout={props.setLayout}></CompletedToDoList>}
       </div>
   )
 }
