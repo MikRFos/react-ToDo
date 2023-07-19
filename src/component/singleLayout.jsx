@@ -1,15 +1,13 @@
 import Card from "./card"
 
-export default function SingleLayout(props){
+export default function SingleLayout({layout, toggleItems}){
 
   return(
     <>
     <Card 
-          key={props.layout.selected.id} 
-          setCompletedTodos={props.setCompletedTodos} 
-          setTodos={props.setTodos} 
-          todo={props.layout.selected} 
-          removeFromCurrentToDos={props.removeFromCurrentToDos}/> 
-    </>  
+           key={layout.selected.id} 
+           todo={layout.selected} 
+           toggleItems={toggleItems}/> 
+     </>  
   )
 }

@@ -1,18 +1,18 @@
-import CompletedToDoList from "../completedToDoList";
+import CompletedToDoList from "./completedToDoList";
 
-function Sidebar(props) {
+function Sidebar({todos, completedTodos, setLayout}) {
   return(
   <div className='sidebar'>
         <h2>Current Projects: </h2>
         <ul>
-          {props.todos.length === 0 && 'No Todos'}
-          {props.todos.map(todo => {
+          {todos.length === 0 && 'No Todos'}
+          {todos.map(todo => {
             return <li key={todo.id} onClick={() => console.log(`${todo.title} Clicked`)}>
               {todo.title}
             </li>
           })}
         </ul>
-        {props.completedTodos.length === 0 ? null : <CompletedToDoList todos={props.completedTodos} setLayout={props.setLayout}></CompletedToDoList>}
+        {completedTodos.length === 0 ? null : <CompletedToDoList todos={completedTodos} setLayout={setLayout}></CompletedToDoList>}
       </div>
   )
 }
