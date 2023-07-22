@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import ToDoList from './component/to-dolist';
 import Sidebar from './component/sidebar';
 import MainContent from './component/maincontent';
@@ -18,25 +18,30 @@ function App() {
   )
 
   const [todos, setTodos] = useState([defaultToDo]);
-  const [completedTodos, setCompletedTodos] = useState([]);
+  const completedCount = useRef(0)
   const [layout, setLayout] = useState({style:'list', selected:null});
 
-  function removeFromCurrentToDos(todo) {
+  function deleteTodo(todo) {
+    console.log(`todo completed check: ${todo.completed}`)
+    if (todo.completed){
+      completedCount.current = completedCount.current - 1;
+    }
     setTodos((current) => {
       return current.filter(item => item.id !== todo.id)
     })
   }
-  
+
   return (
     <div className="App">
       <Header title={'ToDo List'}></Header>
-      <Sidebar todos={todos} completedTodos={completedTodos} setLayout={setLayout}></Sidebar>
+      <Sidebar todos={todos} completedCount={completedCount} setLayout={setLayout}></Sidebar>
       <MainContent 
         layout={layout}
+        setLayout={setLayout}
         todos={todos} 
         setTodos={setTodos} 
-        setCompletedTodos={setCompletedTodos} 
-        removeFromCurrentToDos={removeFromCurrentToDos}>
+        deleteTodo={deleteTodo}
+        completedCount={completedCount}>
       </MainContent>
       <ModalForm  todos={todos} setTodos={setTodos} ></ModalForm>   
     </div>

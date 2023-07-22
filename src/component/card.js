@@ -1,7 +1,8 @@
-function Card({todo, toggleItems}) {
+function Card({todo, toggleItems, deleteTodo, layout, setLayout}) {
 
-  
-
+  function handleClick() {
+    setLayout((current) =>  {return {...current, style:'list'}})
+  }
   return (
     <div className='card'>
     <p>{todo.title}</p>
@@ -17,6 +18,8 @@ function Card({todo, toggleItems}) {
         )})}
       </ul>     
     <p>{todo.description}</p>
+    <button onClick={(() => deleteTodo(todo))}>Delete</button>
+    {layout.style === 'single' ? <button onClick={handleClick}>return to list</button> : null}
   </div>
   )
 }

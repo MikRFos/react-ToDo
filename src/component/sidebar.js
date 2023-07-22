@@ -1,18 +1,21 @@
 import CompletedToDoList from "./completedToDoList";
 
-function Sidebar({todos, completedTodos, setLayout}) {
+function Sidebar({todos, completedCount, setLayout}) {
   return(
   <div className='sidebar'>
         <h2>Current Projects: </h2>
         <ul>
-          {todos.length === 0 && 'No Todos'}
+          {todos.length === completedCount.current && 'No Todos'}
           {todos.map(todo => {
-            return <li key={todo.id} onClick={() => console.log(`${todo.title} Clicked`)}>
-              {todo.title}
-            </li>
+            if(!todo.completed){
+              return <li key={todo.id} onClick={() => console.log(`${todo.title} Clicked`)}>
+                {todo.title}
+              </li>
+            }
+            return null;
           })}
         </ul>
-        {completedTodos.length === 0 ? null : <CompletedToDoList todos={completedTodos} setLayout={setLayout}></CompletedToDoList>}
+        {completedCount.current === 0 ? null : <CompletedToDoList todos={todos} setLayout={setLayout}></CompletedToDoList>}
       </div>
   )
 }

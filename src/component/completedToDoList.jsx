@@ -10,9 +10,12 @@ export default function CompletedToDoList({todos, setLayout}){
       <h2>Completed Projects: </h2>
       <ul>
           {todos.map(todo => {
-            return <li key={todo.id} onClick={() => handleClick(todo)}>
-          {todo.title}
-          </li>
+            if(todo.completed){
+              return <li key={todo.id} onClick={() => handleClick(todo)}>
+                      {todo.title}
+                     </li>
+            }
+            return null;
         })}
       </ul>
     </>
